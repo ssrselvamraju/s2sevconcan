@@ -1,0 +1,1 @@
+cmd_/home/sraju/SeegridWS/PCan/peak-linux-driver-7.9/driver/pcan.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.5.0-34-generic/scripts/module-common.lds --build-id  -o /home/sraju/SeegridWS/PCan/peak-linux-driver-7.9/driver/pcan.ko /home/sraju/SeegridWS/PCan/peak-linux-driver-7.9/driver/pcan.o /home/sraju/SeegridWS/PCan/peak-linux-driver-7.9/driver/pcan.mod.o
