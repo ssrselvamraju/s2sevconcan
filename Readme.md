@@ -18,3 +18,8 @@ The python program sevcon_mover.py writes to a file which is used by the transmi
 
 
 
+Notes for sevcon_mover_degrees:
+
+Each degree movement roughly equals 270deg/(decimal for 4000h) in decimal, which is approx = 60.68. Do calculations accordingly.
+
+
