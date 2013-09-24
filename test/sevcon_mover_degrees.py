@@ -42,24 +42,40 @@ import os
 import time
 import numpy as np
 
+###Globals###
+FFFF = '0xFFFF'
+lowerByte = '0x00'
+upperByte = '0x00'
 
+print "\n\n#####################################################################"
 ###Get User input###
-print "This program allows you to move +/- 90 degrees from the center position. This program accepts angles in the range -90deg to +90 deg.\nPlease enter the angle to be able to move the motor. \n\nPositive anlges can be entered without a sign and imply clockwise motion from the center. \nNegative angles are to be entered with a '-' sign prefixed and imply anti-clockwise motion from the center.\n"
+print "\nThis program allows you to move +/- 90 degrees from the center position. This program accepts angles in the range -90deg to +90 deg.\nPlease enter the angle to be able to move the motor. \n\nPositive anlges can be entered without a sign and imply anti-clockwise motion from the center. \nNegative angles are to be entered with a '-' sign prefixed and imply clockwise motion from the center.\n"
 
 
 while True:
+	print "#####################################################################"
 	angle = int(raw_input("\nEnter Angle: "))
-	print "Entered angle: " + str(angle)
+#	print "Entered angle: " + str(angle)
 	
 	if angle > (90) or angle <(-90):
-		print "Values entered are out of range, please try again"
+		print "\nValues entered are out of range, please try again"
 		time.sleep(3)
 		continue
 
-	lowerByte = raw_input("\nEnter Lower Byte: ")
-	upperByte = raw_input("\nEnter Upper Byte: ")
-	print "\nThe entered values are: LB: " + lowerByte + "  UB: " + upperByte
+	###Convert Angle to Hex
+	angle_hex_val = hex(int(round(abs(angle) * 60.6815)))
 
+	if angle < 0:
+		angle_hex = hex(int(FFFF,16)-int(angle_hex_val,16))
+	else:
+		angle_hex = angle_hex_val
+
+#	print "#####angle_hex: " + angle_hex
+	###Compute lower and upper byte
+	angle_hex_formatted = angle_hex[2:].zfill(4)
+	lowerByte = angle_hex_formatted[2:]
+	upperByte = angle_hex_formatted[:2]
+#	print "\n#####upperByte: " + upperByte + " lowerByte: " + lowerByte
 	###Write to file###
 	file = open("move_sevcon.txt","w")
 	file.write("#CAN messages for Sevcon position control\n")
@@ -72,9 +88,9 @@ while True:
 	os.system("cat move_sevcon.txt")
 	#time.sleep(10)
 	print "\n\n"
-	###Call the Transmit test program and wait for a max of 3 seconds###
+	###Call the Transmit test program and wait for a max of 1 seconds###
 
-	#os.system("./transmitest move_sevcon.txt -f=/dev/pcan32 -b=0x031C -r=500")
+	os.system("./transmitest move_sevcon.txt -f=/dev/pcan32 -b=0x031C -r=500")
 
 	time.sleep(1)
 
