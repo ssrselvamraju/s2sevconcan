@@ -49,7 +49,7 @@ upperByte = '0x00'
 
 print "\n\n#####################################################################"
 ###Get User input###
-print "\nThis program allows you to move +/- 90 degrees from the center position. This program accepts angles in the range -90deg to +90 deg.\nPlease enter the angle to be able to move the motor. \n\nPositive anlges can be entered without a sign and imply anti-clockwise motion from the center. \nNegative angles are to be entered with a '-' sign prefixed and imply clockwise motion from the center.\n"
+print "\nThis program allows you to move +/- 90 degrees from the center position. This program accepts angles in the range -90deg to +90 deg.\nPlease enter the angle to be able to move the motor. \n\nNOTE: Positive anlges can be entered without a sign and imply anti-clockwise motion. \nNegative angles are to be entered with a '-' sign prefixed and imply clockwise motion.\n"
 
 
 while True:

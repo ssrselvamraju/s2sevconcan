@@ -18,8 +18,13 @@ The python program sevcon_mover.py writes to a file which is used by the transmi
 
 
 
-Notes for sevcon_mover_degrees:
+#Notes for sevcon_mover_degrees:
 
-Each degree movement roughly equals 270deg/(decimal for 4000h) in decimal, which is approx = 60.68. Do calculations accordingly.
+Each degree movement roughly equals (decimal for 4000h) in decimal/270deg, which is approx = 60.68 (in dec). Do calculations accordingly.
+
+Calculations: +ve angle = round(angle * 60.6815) and convert to hex.
+	      -ve angle = same as above and subtract the hex from FFFF.
+
+Note: +ve angle = anticloclwise and -ve angle = clockwise.
 
 
